@@ -10,6 +10,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: cartInitialState,
   reducers: {
+    // add book to the cart
     addToCart(state, action) {
       const item = state.cartItems.filter(
         (item: Book) => item.id === action.payload.id
@@ -22,12 +23,14 @@ const cartSlice = createSlice({
         state.cartItems = [...state.cartItems, itemToAdd];
       }
     },
+    // delete book from the cart
     deleteItem(state, action) {
       const index = state.cartItems.findIndex(
         (item: Book) => item.id === action.payload.id
       );
       state.cartItems.splice(index, 1);
     },
+    // increase quantity for particular book in the shopping cart
     increaseQuantity(state, action) {
       const idx = state.cartItems.findIndex(
         (item: Book) => item.id === action.payload.id
@@ -42,6 +45,7 @@ const cartSlice = createSlice({
         quantity,
       };
     },
+    // decrease quantity for particular book in the shopping cart, if quantity < 1, deletes from cart
     decreaseQuantity(state, action) {
       const idx = state.cartItems.findIndex(
         (item: Book) => item.id === action.payload.id
