@@ -44,12 +44,12 @@ const Cart: FC = () => {
               alt={cartItem.formats["image/jpeg"]}
             />
             <QuantityWrapper>
-              <Button onClick={() => dispatch(increaseQuantity(cartItem))}>
-                <AddCircleOutlineIcon />
-              </Button>
-              <Box>{cartItem?.quantity}</Box>
               <Button onClick={() => dispatch(decreaseQuantity(cartItem))}>
                 <RemoveCircleOutlineIcon />
+              </Button>
+              <Box>{cartItem?.quantity}</Box>
+              <Button onClick={() => dispatch(increaseQuantity(cartItem))}>
+                <AddCircleOutlineIcon />
               </Button>
             </QuantityWrapper>
             {/*@ts-ignore*/}
